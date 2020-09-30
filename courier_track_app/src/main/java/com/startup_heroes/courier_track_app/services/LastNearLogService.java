@@ -1,5 +1,6 @@
 package com.startup_heroes.courier_track_app.services;
 
+import com.startup_heroes.courier_track_app.common.LogObserverServiceInterface;
 import com.startup_heroes.courier_track_app.models.CourierLogModel;
 import com.startup_heroes.courier_track_app.models.LastNearLogModel;
 import com.startup_heroes.courier_track_app.models.StoreModel;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class LastNearLogService {
+public class LastNearLogService implements LogObserverServiceInterface {
 
     @Autowired
     CourierLogRepository courierLogRepository;
@@ -25,8 +26,20 @@ public class LastNearLogService {
     @Autowired
     DistanceService distanceService;
 
+    private String resultString = "";
 
-    public List<String> isCourierNearAnyStore(CourierLogModel courierLogModel)
+    public String getResultString()
+    {
+        return this.resultString;
+    }
+
+    public void updateResultString(String newString)
+    {
+        this.resultString = newString + "\n" + this.resultString;
+    }
+
+
+    private void isCourierNearAnyStore(CourierLogModel courierLogModel)
     {
         List<StoreModel> lisOfStores = storeRepository.findAll();
         List<String> resultList = new ArrayList<String>();
@@ -36,18 +49,21 @@ public class LastNearLogService {
             double distance = distanceService.calculateDistanceBetweenTwoPointsInMeters(courierLogModel.lat,courierLogModel.lng,store.lat,store.lng);
             if ( distance <= 100 )
             {
-                if( !checkIfLessThanOneMinute(courierLogModel.courierId, store.id, courierLogModel.logTime) )
+                if( !this.checkIfLessThanOneMinute(courierLogModel.courierId, store.id, courierLogModel.logTime) )
                     resultList.add(store.name);
             }
         }
-        return resultList;
+        if(resultList.size() > 0 ){
+            String responseString = "TIME: " +courierLogModel.logTime + " - Courier with " + courierLogModel.courierId + " id is in 100 meter range of given stores: \n" + String.join(",", resultList);
+            this.updateResultString(responseString);
+        }
     }
 
-    public boolean checkIfLessThanOneMinute(String courierId, String storeId, Time time)
+    private boolean checkIfLessThanOneMinute(String courierId, String storeId, Time time)
     {
         LastNearLogModel lastNearLogModel = lastNearLogRepository.findLastNearLogModelByCourierIdAndStoreId(courierId,storeId);
         if (lastNearLogModel != null && time.getTime() - lastNearLogModel.logTime.getTime() > 60000) {
-            updateNearStoreLog(lastNearLogModel, time);
+            this.updateNearStoreLog(lastNearLogModel, time);
             return false;
         }
         else if (lastNearLogModel == null){
@@ -58,9 +74,14 @@ public class LastNearLogService {
         return true;
     }
 
-    public void updateNearStoreLog(LastNearLogModel lastNearLogModel, Time time)
+    private void updateNearStoreLog(LastNearLogModel lastNearLogModel, Time time)
     {
         lastNearLogModel.logTime = time;
         lastNearLogRepository.save(lastNearLogModel);
+    }
+
+    @Override
+    public void update(CourierLogModel newLog) {
+        this.isCourierNearAnyStore(newLog);
     }
 }

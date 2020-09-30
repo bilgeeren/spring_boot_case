@@ -41,12 +41,6 @@ public class LogController {
     @PostMapping("/courierLogs/addLog")
     public String saveNewLog(@RequestBody CourierLogModel courierLog) {
         CourierLogModel newLog = logService.saveLog(courierLog);
-        courierService.updateCourierCurrentPosition(newLog);
-        List<String> isNearList = lastNearLogService.isCourierNearAnyStore(newLog);
-        if(isNearList.size() > 0 ){
-            String responseString = "Courier with id of " + courierLog.courierId + " is now in 100 meter range of given stores: \n" + String.join(",", isNearList);
-            return responseString;
-        }
-        return "Log saved.";
+        return lastNearLogService.getResultString();
     }
 }

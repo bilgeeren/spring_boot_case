@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="defdc457-8b22-47a0-8b94-60b7628d974d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/common/LogObserverServiceInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/controllers/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/controllers/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/CourierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/CourierService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LastNearLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LastNearLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LogService.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +41,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.startup_heroes.courier_track_app.services" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.startup_heroes.courier_track_app" />
     </key>
