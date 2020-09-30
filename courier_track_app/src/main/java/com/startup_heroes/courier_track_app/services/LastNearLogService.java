@@ -66,11 +66,12 @@ public class LastNearLogService implements LogObserverServiceInterface {
             this.updateNearStoreLog(lastNearLogModel, time);
             return false;
         }
-        else if (lastNearLogModel == null){
+        else if (lastNearLogModel == null ){
             LastNearLogModel newLastNearLogModel = new LastNearLogModel(courierId, storeId, time);
             lastNearLogRepository.save(newLastNearLogModel);
             return false;
         }
+        this.updateNearStoreLog(lastNearLogModel, time);
         return true;
     }
 
