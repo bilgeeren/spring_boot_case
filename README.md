@@ -16,17 +16,19 @@ This RestAPI runs at LocalHost::8080 port.
 END POINTS: 
 
 GET: 
-/courier -> Returns Courıer List
-/courier/id?={id} -> Returns Courier with given id
-/courier/totalDistance/id?={id} -> Returns Total travel distance of Courier with given id ( Distance unit: METER )
-/store -> Returns Store list
-/store/id?={id}  -> Returns Store with given id
-/courierLogs -> Returns CourierLog List
-/courierLogs/id?={id} -> Returns Courier Logs with given courierId
-/lastNearLogs -> Returns CourierId - StoreId - time object (When any courier lastly in 100 m range of the any store)
+
+- ``` /courier ``` -> Returns Courıer List
+- ``` /courier/id?={id} ``` -> Returns Courier with given id
+- ``` /courier/totalDistance/id?={id} ``` -> Returns Total travel distance of Courier with given id ( Distance unit: METER )
+- ``` /store ```-> Returns Store list
+- ``` /store/id?={id} ``` -> Returns Store with given id
+- ``` /courierLogs ```-> Returns CourierLog List
+- ``` /courierLogs/id?={id} ``` -> Returns Courier Logs with given courierId
+- ``` /lastNearLogs ``` -> Returns CourierId - StoreId - time object (When any courier lastly in 100 m range of the any store)
 
 POST:
-/courier -> Request body as JSON with courier class keys. -> Saves courier (Not necessary if log saved courier automaticly saved or updated)
-/store -> Request body as JSON with store class keys. -> Saves store (Not necessary Stores saved at initialization from stores.json)
-/courierLogs/addLog -> Request body as JSON with courierLog class keys. -> Saves log entry. 
+
+- ```/courier``` -> Request body as JSON with courier class keys. -> Saves courier (Not necessary if log saved courier automaticly saved or updated)
+- ```/store``` -> Request body as JSON with store class keys. -> Saves store (Not necessary Stores saved at initialization from stores.json)
+- ```/courierLogs/addLog``` -> Request body as JSON with courierLog class keys. -> Saves log entry. 
 
