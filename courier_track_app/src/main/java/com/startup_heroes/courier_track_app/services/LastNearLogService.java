@@ -1,6 +1,7 @@
 package com.startup_heroes.courier_track_app.services;
 
-import com.startup_heroes.courier_track_app.common.LogObserverServiceInterface;
+import com.startup_heroes.courier_track_app.common.LogDecoratorInterface;
+import com.startup_heroes.courier_track_app.common.LogObserverInterface;
 import com.startup_heroes.courier_track_app.models.CourierLogModel;
 import com.startup_heroes.courier_track_app.models.LastNearLogModel;
 import com.startup_heroes.courier_track_app.models.StoreModel;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class LastNearLogService implements LogObserverServiceInterface {
+public class LastNearLogService implements LogObserverInterface, LogDecoratorInterface {
 
     @Autowired
     CourierLogRepository courierLogRepository;
@@ -28,16 +29,20 @@ public class LastNearLogService implements LogObserverServiceInterface {
 
     private String resultString = "";
 
+    @Override
+    public void update(CourierLogModel newLog) {
+        this.isCourierNearAnyStore(newLog);
+    }
+
+    @Override
+    public void decorate(String newString) {
+        this.resultString = newString + "\n" + this.resultString;
+    }
+    
     public String getResultString()
     {
         return this.resultString;
     }
-
-    public void updateResultString(String newString)
-    {
-        this.resultString = newString + "\n" + this.resultString;
-    }
-
 
     private void isCourierNearAnyStore(CourierLogModel courierLogModel)
     {
@@ -55,7 +60,7 @@ public class LastNearLogService implements LogObserverServiceInterface {
         }
         if(resultList.size() > 0 ){
             String responseString = "TIME: " +courierLogModel.logTime + " - Courier with " + courierLogModel.courierId + " id is in 100 meter range of given stores: \n" + String.join(",", resultList);
-            this.updateResultString(responseString);
+            this.decorate(responseString);
         }
     }
 
@@ -79,10 +84,5 @@ public class LastNearLogService implements LogObserverServiceInterface {
     {
         lastNearLogModel.logTime = time;
         lastNearLogRepository.save(lastNearLogModel);
-    }
-
-    @Override
-    public void update(CourierLogModel newLog) {
-        this.isCourierNearAnyStore(newLog);
     }
 }

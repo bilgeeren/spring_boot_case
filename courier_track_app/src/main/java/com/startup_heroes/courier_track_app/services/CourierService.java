@@ -1,6 +1,7 @@
 package com.startup_heroes.courier_track_app.services;
 
-import com.startup_heroes.courier_track_app.common.LogObserverServiceInterface;
+import com.startup_heroes.courier_track_app.common.LogDecoratorInterface;
+import com.startup_heroes.courier_track_app.common.LogObserverInterface;
 import com.startup_heroes.courier_track_app.models.CourierLogModel;
 import com.startup_heroes.courier_track_app.models.CourierModel;
 import com.startup_heroes.courier_track_app.repositories.CourierRepository;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CourierService implements LogObserverServiceInterface {
+public class CourierService implements LogObserverInterface {
     @Autowired
     CourierRepository courierRepository;
     @Autowired
@@ -30,4 +31,5 @@ public class CourierService implements LogObserverServiceInterface {
     public void update(CourierLogModel newLog) {
         this.updateCourierCurrentPosition(newLog);
     }
+
 }

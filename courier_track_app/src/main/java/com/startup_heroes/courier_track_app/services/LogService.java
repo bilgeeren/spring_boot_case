@@ -1,5 +1,5 @@
 package com.startup_heroes.courier_track_app.services;
-import com.startup_heroes.courier_track_app.common.LogObserverServiceInterface;
+import com.startup_heroes.courier_track_app.common.LogObserverInterface;
 import com.startup_heroes.courier_track_app.models.*;
 import com.startup_heroes.courier_track_app.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class LogService {
     @Autowired
     LastNearLogService lastNearLogService;
 
-    private List<LogObserverServiceInterface> observers = new ArrayList<>();
+    private List<LogObserverInterface> observers = new ArrayList<>();
 
     @PostConstruct
     public void registerObservers()
@@ -31,7 +31,7 @@ public class LogService {
         this.addObserver(lastNearLogService);
     }
 
-    private void addObserver(LogObserverServiceInterface observer)
+    private void addObserver(LogObserverInterface observer)
     {
         this.observers.add(observer);
     }

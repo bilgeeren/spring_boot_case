@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="defdc457-8b22-47a0-8b94-60b7628d974d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/common/LogObserverServiceInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/common/LogDecoratorInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/common/LogObserverInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/controllers/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/controllers/LogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/CourierService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/CourierService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LastNearLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LastNearLogService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/startup_heroes/courier_track_app/services/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/startup_heroes/courier_track_app/CourierTrackAppApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/startup_heroes/courier_track_app/CourierServiceTrackAppApplicationTests.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -88,6 +90,7 @@
       <workItem from="1601490445545" duration="8000" />
       <workItem from="1601490471810" duration="56000" />
       <workItem from="1601490852574" duration="399000" />
+      <workItem from="1601543488471" duration="475000" />
     </task>
     <servers />
   </component>
